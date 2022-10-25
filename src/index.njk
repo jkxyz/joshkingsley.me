@@ -3,4 +3,7 @@
 <meta charset="utf-8">
 <title>Josh Kingsley</title>
 <p>Test</p>
+{% for post in posts %}
+<p><a href="{{ post.path }}">{{ post.title }}</a></p>
+{% endfor %}
 </html>
