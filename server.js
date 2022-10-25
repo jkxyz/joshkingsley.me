@@ -18,7 +18,7 @@ chokidar
     build();
   });
 
-const fileServer = new nodeStatic.Server('target');
+const fileServer = new nodeStatic.Server('target', { cache: false });
 
 http
   .createServer((req, res) => {
