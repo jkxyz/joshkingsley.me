@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8">
-<title>Josh Kingsley</title>
-<p>Test</p>
-{% for post in posts %}
-<p><a href="{{ post.path }}">{{ post.title }}</a></p>
-{% endfor %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Josh Kingsley</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">Josh Kingsley</header>
+      <div class="bio">
+        <p>Hi! I'm a software engineer from the UK, living in Romania.</p>
+        <p>My deepest field of knowledge is Clojure and the web ecosystem.</p>
+        <p>I also spend a lot of time working with Linux, Nix, and Emacs.</p>
+      </div>
+      <div>
+        <h1>Blog</h1>
+        {% for post in posts %}
+          <p><a href="{{ post.path }}">{{ post.title }}</a></p>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
 </html>

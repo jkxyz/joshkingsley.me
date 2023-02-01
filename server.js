@@ -13,7 +13,7 @@ function build () {
 build();
 
 chokidar
-  .watch(['config.js', 'src/**/*'], { ignoreInitial: true })
+  .watch(['config.js', 'layouts/**/*', 'src/**/*'], { ignoreInitial: true })
   .on('all', () => {
     build();
   });
