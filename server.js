@@ -5,8 +5,10 @@ const chokidar = require('chokidar');
 function build () {
   delete require.cache[require.resolve('./config')];
   const config = require('./config');
-  config.build(err => {
-    if (err) throw err;
+  config.build((err) => {
+    if (err) {
+      throw err;
+    }
   });
 }
 
