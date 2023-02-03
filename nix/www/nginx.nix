@@ -43,6 +43,12 @@ in {
       forceSSL = true;
       root = "${static}/lib/node_modules/joshkingsley.me/target";
     };
+
+    virtualHosts."joshkingsley.me" = {
+      enableACME = true;
+      addSSL = true;
+      globalRedirect = "www.joshkingsley.me";
+    };
   };
 
   security.acme.acceptTerms = true;
