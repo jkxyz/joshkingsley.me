@@ -15,6 +15,8 @@
       address = "fe80::1";
       interface = "ens3";
     };
+
+    firewall.allowedTCPPorts = [ 22 80 443 ];
   };
 
   services.openssh.enable = true;
