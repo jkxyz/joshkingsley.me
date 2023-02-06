@@ -8,19 +8,20 @@
     <title>Josh Kingsley</title>
   </head>
   <body>
-    <div class="container">
-      <header class="header">Josh Kingsley</header>
-      <div class="bio">
-        <p>Hi! I'm a software engineer from the UK, living in Romania.</p>
-        <p>My deepest field of knowledge is Clojure and the web ecosystem.</p>
-        <p>I also spend a lot of time working with Linux, Nix, and Emacs.</p>
-      </div>
-      <div>
-        <h1>Blog</h1>
-        {% for post in posts %}
-          <p><a href="{{ post.path }}">{{ post.title }}</a></p>
-        {% endfor %}
-      </div>
-    </div>
+    <main>
+      <header>
+        <h1><strong>Josh Kingsley</strong></h1>
+        <nav>
+          <ul>
+            <li><a href="mailto:josh@joshkingsley.me">josh@joshkingsley.me</a></li>
+            <li>GitHub: <a href="https://github.com/jkxyz">@jkxyz</a></li>
+            <li>Mastodon: <a href="https://hostux.social/@jkxyz">@jkxyz@hostux.social</a></li>
+          </ul>
+        </nav>
+      </header>
+      <p>Hi! I'm a software developer from the UK, living in Romania.</p>
+      <p>I mostly work with Clojure, JavaScript, and the web ecosystem.</p>
+      <p>Other areas of interest include Nix, Emacs, and Linux.</p>
+    </main>
   </body>
 </html>
