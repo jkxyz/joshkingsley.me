@@ -13,9 +13,9 @@
         nixosConfigurations.www = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./www/configuration.nix
-            ./www/hardware-configuration.nix
-            ./www/nginx.nix
+            ./nixos/www/configuration.nix
+            ./nixos/www/hardware-configuration.nix
+            ./nixos/nginx.nix
           ];
         };
       };
