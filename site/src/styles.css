@@ -42,9 +42,8 @@ p, ul, ol, dl, table, blockquote, pre, h1, h2, h3, h4, h5, h6 {
 ul ul, ol ol, ul ol, ol ul { margin: 0; }
 
 hr {
-  margin: 0;
-  border: none;
-  padding: 1.5rem 0 0;
+  border: 1px solid #dbdbdb;
+  margin: 1.5rem 0 0;
 }
 
 /* Accounting for borders */
