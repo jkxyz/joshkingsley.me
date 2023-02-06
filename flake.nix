@@ -8,14 +8,14 @@
     flake-utils.lib.eachDefaultSystem (system:
       let pkgs = import nixpkgs { inherit system; };
       in {
-        packages = { static = pkgs.callPackage (import ./static.nix) { }; };
+        packages = { site = pkgs.callPackage (import ./site.nix) { }; };
       }) // {
         nixosConfigurations.www = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./nix/www/configuration.nix
-            ./nix/www/hardware-configuration.nix
-            ./nix/www/nginx.nix
+            ./www/configuration.nix
+            ./www/hardware-configuration.nix
+            ./www/nginx.nix
           ];
         };
       };

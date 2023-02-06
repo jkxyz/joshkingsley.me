@@ -1,7 +1,7 @@
 { buildNpmPackage, ... }:
 
 buildNpmPackage {
-  name = "joshkingsley.me";
-  src = ./.;
+  name = "site";
+  src = ./site;
   npmDepsHash = "sha256-INxapjIHUoEviqJgHkfe6nhHNCSiBwQsiVNCkMQwPIc=";
 }

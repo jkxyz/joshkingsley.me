@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-let static = pkgs.callPackage (import ../../static.nix) { };
+let site = pkgs.callPackage (import ../site.nix) { };
 
 in {
   services.nginx = {
@@ -38,16 +38,16 @@ in {
       add_header X-XSS-Protection "1; mode=block";
     '';
 
-    virtualHosts."www.joshkingsley.me" = {
-      enableACME = true;
-      forceSSL = true;
-      root = "${static}/lib/node_modules/joshkingsley.me/target";
-    };
-
     virtualHosts."joshkingsley.me" = {
       enableACME = true;
+      forceSSL = true;
+      root = "${site}/lib/node_modules/site/target";
+    };
+
+    virtualHosts."www.joshkingsley.me" = {
+      enableACME = true;
       addSSL = true;
-      globalRedirect = "www.joshkingsley.me";
+      globalRedirect = "joshkingsley.me";
     };
   };
 
