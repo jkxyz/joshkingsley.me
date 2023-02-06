@@ -65,7 +65,7 @@ mark { color: inherit; }
 code, pre, samp, thead, tfoot { background-color: rgba(0, 0, 0, 0.05); }
 mark { background-color: #fe0; }
 
-main aside, blockquote, ins { border: solid rgba(0, 0, 0, 0.05); }
+/* main aside, blockquote, ins { border: solid rgba(0, 0, 0, 0.05); } */
 pre, code, samp { border: solid rgba(0, 0, 0, 0.1); }
 th, td { border: solid #dbdbdb; }
 
@@ -73,9 +73,7 @@ th, td { border: solid #dbdbdb; }
 
 body { margin: 1.5rem 1ch; }
 
-body > header { text-align: center; }
-
-main, body > footer {
+main, body > header, body > footer {
   display: block; /* Just in case */
   max-width: 78ch;
   margin: auto;

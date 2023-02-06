@@ -25,6 +25,7 @@ module.exports = Metalsmith(__dirname)
     posts: {
       pattern: 'blog/**/*.html',
       sortBy: 'date',
+      filterBy: ({ draft }) => !draft,
       reverse: true
     }
   }))

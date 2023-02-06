@@ -8,29 +8,31 @@
     <title>Josh Kingsley</title>
   </head>
   <body>
+    <header>
+      <h1><strong>Josh Kingsley</strong></h1>
+      <nav>
+        <ul>
+          <li><a href="mailto:josh@joshkingsley.me">josh@joshkingsley.me</a></li>
+          <li>GitHub: <a href="https://github.com/jkxyz">@jkxyz</a></li>
+          <li>Mastodon: <a rel="me" href="https://hostux.social/@jkxyz">@jkxyz@hostux.social</a></li>
+        </ul>
+      </nav>
+    </header>
     <main>
-      <header>
-        <h1><strong>Josh Kingsley</strong></h1>
-        <nav>
-          <ul>
-            <li><a href="mailto:josh@joshkingsley.me">josh@joshkingsley.me</a></li>
-            <li>GitHub: <a href="https://github.com/jkxyz">@jkxyz</a></li>
-            <li>Mastodon: <a rel="me" href="https://hostux.social/@jkxyz">@jkxyz@hostux.social</a></li>
-          </ul>
-        </nav>
-      </header>
       <p>Hi! I'm a software developer from the UK, living in Romania.</p>
       <p>I mostly work with Clojure, JavaScript, and the web ecosystem.</p>
       <p>Other areas of interest include Nix, Emacs, Linux, and music.</p>
-      <h2><strong>Blog</strong></h2>
-      {% for post in posts %}
-        <article>
-          <h4><a href="{{ post.path }}">{{ post.title }}</a></h4>
-          <time datetime="{{ post.date | dateString }}" title="{{ post.date | dateString }}">
-            {{ post.date | localeDateString }}
-          </time>
-        </article>
-      {% endfor %}
+      {% if posts.length > 0 %}
+        <h2>Blog</h2>
+        {% for post in posts %}
+          <article>
+            <h4><a href="{{ post.path }}">{{ post.title }}</a></h4>
+            <time datetime="{{ post.date | dateString }}" title="{{ post.date | dateString }}">
+              {{ post.date | localeDateString }}
+            </time>
+          </article>
+        {% endfor %}
+      {% endif %}
     </main>
   </body>
 </html>

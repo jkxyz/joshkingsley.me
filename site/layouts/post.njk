@@ -8,8 +8,21 @@
     <title>Josh Kingsley</title>
   </head>
   <body>
-    <div class="container">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>{{ title }}</h1>
+      <p>
+        <time datetime="{{ date | dateString }}" title="{{ date | dateString }}">
+          {{ date | localeDateString }}
+        </time>
+      </p>
       {{ contents | safe }}
-    </div>
+    </main>
   </body>
 </html>
