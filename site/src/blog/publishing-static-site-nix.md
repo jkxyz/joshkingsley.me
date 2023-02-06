@@ -251,6 +251,10 @@ And then deploy it to the server:
 $ nixos-rebuild switch --flake .#www --target-host root@www.joshkingsley.me
 ```
 
+Whoa! That's pretty cool. We just ran one command to turn a declarative configuration
+into an operating system and make it run on a remote machine! Get ready for more
+mediocre mind bombs like this as you fall deeper into the exciting world of Nix.
+
 This last command will build all of the necessary packages and derivations locally,
 before copying the required paths from the local Nix store to the server. It then
 creates a bunch of symlinks to define a new "generation" of the system, and runs
@@ -296,6 +300,15 @@ The nginx options are pretty high-level, and they make it really easy to define 
 nginx configuration with automatic SSL provided by Let's Encrypt. The first virtual
 host is configured with a `root` pointing to the build directory in our site package.
 The second redirects all requests to the domain without the "www".
+
+Another mind bomb: if we removed that line starting with `root =` from the file, Nix
+would never attempt to build our static site. Even though we've included it in the file
+with the call to `pkgs.callPackage`. `callPackage` just returns a derivation, and when
+we coerce a derivation to a string we get a path to where its output _would be_ in the Nix
+store, but it's not been built yet. Something like: `/nix/store/sha256hashoftheinputs-site`. 
+We declare a dependency on that derivation through simple string interpolation. When Nix 
+sees a string starting with `/nix/store`, it knows it's a derivation which needs to be built. 
+Nix is lazily evaluated!
 
 Now we can add it to the list of modules in our system:
 
