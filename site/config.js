@@ -3,6 +3,8 @@ const inPlace = require('@metalsmith/in-place');
 const collections = require('@metalsmith/collections');
 const layouts = require('@metalsmith/layouts');
 const markdown = require('@metalsmith/markdown');
+const highlightjs = require('highlight.js');
+const postcss = require('@metalsmith/postcss');
 
 const nunjucksOptions = {
   filters: {
@@ -20,7 +22,17 @@ module.exports = Metalsmith(__dirname)
   .source('src')
   .destination('target')
   .clean(true)
-  .use(markdown())
+  .use(markdown({
+    engineOptions: {
+      highlight: (code, language) => {
+        if (language) {
+          return highlightjs.highlight(code, { language }).value;
+        } else {
+          return code;
+        }
+      }
+    }
+  }))
   .use(collections({
     posts: {
       pattern: 'blog/**/*.html',
@@ -38,4 +50,7 @@ module.exports = Metalsmith(__dirname)
     pattern: 'blog/**/*.html',
     suppressNoFilesError: true,
     engineOptions: nunjucksOptions
+  }))
+  .use(postcss({
+    plugins: { 'postcss-import': {} }
   }));
