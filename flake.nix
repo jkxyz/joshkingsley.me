@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -8,7 +8,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       let pkgs = import nixpkgs { inherit system; };
       in {
-        packages = { site = pkgs.callPackage (import ./site.nix) { }; };
+        packages = { default = pkgs.callPackage (import ./.) { }; };
       }) // {
         nixosConfigurations.www = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
